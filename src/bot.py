@@ -10,8 +10,8 @@ from price_fetcher import fetch_token_price
 TOKEN_MAP = {
     "BERA":"berachain",
     "BGT":"berachain-governance-token",
-    "iBGT":"infrared-bgt",
-    "lBGT":"liquid-bgt"
+    "IBGT":"infrared-bgt",
+    "LBGT":"liquid-bgt"
 }
 
 # Load environment variables
