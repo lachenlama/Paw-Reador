@@ -8,10 +8,10 @@ from utils import extract_chunks
 from price_fetcher import fetch_token_price
 
 TOKEN_MAP = {
-    "BERA":"berachain",
-    "BGT":"berachain-governance-token",
-    "IBGT":"infrared-bgt",
-    "LBGT":"liquid-bgt"
+    "bera":"berachain",
+    "bgt":"berachain-governance-token",
+    "ibgt":"infrared-bgt",
+    "lbgt":"liquid-bgt"
 }
 
 # Load environment variables
@@ -86,10 +86,18 @@ async def ping(ctx):
 #Helper functions
 def extract_token_name(question:str) -> str:
     tokens = question.lower().split()
-    if "price" in tokens:
-        idx = tokens.index("price")
-        return tokens[idx-1] if idx > 0 else "BGT"
-    return "BGT"
+    price_terms = ["price", "prices", "value", "cost", "how much"]
+    for term in price_terms:
+        if term in tokens:
+            start_idx = max(0, tokens.index(term) - 2)
+            end_idx = min(len(tokens), tokens.index(term) + 3)
+            context = tokens[start_idx:end_idx]
+
+            for token in TOKEN_MAP.keys():
+                if token in context:
+                    return token
+
+    return "bgt"    
 
 def calculate_change(prices: dict) -> float:
     return ((prices['current'] - prices['yesterday']) / prices['yesterday']) * 100
