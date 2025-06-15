@@ -40,5 +40,4 @@ venv.bak/
 .DS_Store
 
 # Documentation (exclude since it's generated)
-docs/
 chromadb/  # Exclude vector database unless you want to track it
