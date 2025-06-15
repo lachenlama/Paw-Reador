@@ -19,7 +19,7 @@ env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
 load_dotenv(env_path)
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-DOCS_PATH = os.getenv("DOCS_PATH", "../docs")
+DOCS_PATH = os.getenv("DOCS_PATH", "/home/pawreador/Paw-Reador/docs") #in the hosted vps
 
 # Initialize RAG model (indexing at startup)
 rag = RAGModel(docs_path=DOCS_PATH)
