@@ -1,0 +1,57 @@
+# FAQs
+
+1. [Resources](/berafarm/resources)
+
+FAQs
+====
+
+> *Beras have questions, we have answers. Grab a honey pot and let's clear up your wildest BeraFarm curiosities*
+
+---
+
+**How do I choose between the base-yield and rewards-yield tranches?**
+
+* Picking your honey flavor is personal:
+
+  + Base-yield tranche: For beras who like their rewards in the same farm they deposited (stick with $HONEY or $BERA)
+  + Rewards-yield tranche: For adventurous bears who want to sample different forest flavors (other platform tokens and $f-BGT)
+
+**Can I withdraw my funds at any time from BeraFarm vaults?**
+
+* Ooga Booga! You betcha! Your honey is never locked in our cave - grab it whenever you need it.
+
+**What benefits does $f-BGT offer compared to regular $BGT?**
+
+* While regular $BGT is as attached to your address as honey to a bear's paw, $f-BGT breaks free:
+
+  + Roams the DeFi forest freely while still being backed 1:1 by real $BGT
+  + Mingles with other DeFi protocols like a social bear
+  + Can still be burnt and exchanged for $BERA tokens when you're feeling hungry
+  + Finds extra honey pots through specialized $f-BGT strategies
+
+**What is the "fBGT Controller" mentioned in the whitepaper?**
+
+* Think of the "fBGT Controller" as the master beekeeper of our hive. It's where all the $BGT earned from our DeFi honey hunts gets stored. This clever bera crafts the liquid $f-BGT tokens (backed 1:1 by real $BGT), essentially building a bridge between the soulbound tokens stuck in their cave and the free-roaming tokens exploring the forest.
+
+**How does BeraFarm maximize my yields?**
+
+* While you're hibernating, our protocol is doing the heavy lifting:
+
+  + Sniffing out the sweetest honey spots across the DeFi landscape
+  + Dancing with top validators to secure the juiciest delegation rewards
+  + Raising our paws in governance votes that bring home the most bribes
+  + Automatically reinvesting your earnings faster than a bera can climb a tree
+
+**What happens if I sleep through a governance vote?**
+
+* Not a problem, sleepyhead! Our protocol never hibernates - we're actively participating in all important votes to maximize your rewards while you enjoy your beauty rest.
+
+**Is my $BGT safe in BeraFarm?**
+
+* Safer than honey in a bear's den! Our protocol is battle-tested, and guarded by the most vigilant bears in the forest.
+
+---
+
+[PreviousLinks](/berafarm/resources/links)
+
+Last updated 2 months ago

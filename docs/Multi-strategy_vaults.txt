@@ -1,0 +1,37 @@
+# Multi-strategy vaults
+
+1. [How Does BeraFarm Work](/berafarm/how-does-berafarm-work)
+
+Multi-strategy vaults
+=====================
+
+> *Diversification at It's Best*
+
+---
+
+![](https://berafarm.gitbook.io/~gitbook/image?url=https%3A%2F%2F3288066147-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FOvo3UFlmhHFt4nhY532w%252Fuploads%252FJyRA74BZ04pJ20b2t4bX%252FBerafarm%2520Architecture.png%3Falt%3Dmedia%26token%3D9dae58f5-a351-4953-830d-037398296c69&width=768&dpr=4&quality=100&sign=a4629213&sv=2)
+
+Each vault serves as the entry point for managing user deposits and withdrawals. When funds enter a vault, they're automatically forwarded to the strategy manager, which intelligently distributes these assets across multiple high-performing strategies based on predefined allocations.
+
+The vault's dynamic allocation system routes funds to diverse DeFi strategies, such as liquidity provision on DEXs - BEX, Kodiaq, lending on Dolomite, and other synthetic strategies. Our proprietary strategy rebalancer continuously monitors performance metrics and market conditions, optimizing strategy allocations to maximize returns while maintaining appropriate risk parameters.
+
+---
+
+### **Example Deposit Flow:**
+
+1. User deposits 1,000 $HONEY into BeraFarm's $HONEY vault
+2. The strategy manager receives the 1,000 $HONEY and distributes it:
+
+   * 500 $HONEY (50%) to BEX liquidity pools
+   * 300 $HONEY (30%) to Dolomite lending
+   * 200 $HONEY (20%) to other optimized strategies
+3. As market conditions change, the rebalancer might adjust these allocations (e.g., shifting more to Dolomite if lending rates increase)
+4. All yields generated from these strategies flow back to the vault and are distributed according to the user's farm selection (Base-Yield or Rewards-Yield)
+
+---
+
+This multi-strategy approach ensures capital efficiency and risk diversification while requiring zero management from users.
+
+[PreviousBerafarm x BeraChain](/berafarm/berafarm-x-berachain)[NextDynamic Yield Tranching](/berafarm/how-does-berafarm-work/dynamic-yield-tranching)
+
+Last updated 2 months ago

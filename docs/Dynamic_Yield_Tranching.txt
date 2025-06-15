@@ -1,0 +1,60 @@
+# Dynamic Yield Tranching
+
+1. [How Does BeraFarm Work](/berafarm/how-does-berafarm-work)
+
+Dynamic Yield Tranching
+=======================
+
+---
+
+![](https://berafarm.gitbook.io/~gitbook/image?url=https%3A%2F%2F3288066147-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FOvo3UFlmhHFt4nhY532w%252Fuploads%252Fb65k8ZAawTfk7TxLVY0f%252FBanner%25206.jpg%3Falt%3Dmedia%26token%3D9715882a-2026-4b3e-be06-bf211faa6800&width=768&dpr=4&quality=100&sign=95322dd&sv=2)
+
+`The Right Choice for the Right Reward`
+
+---
+
+Each DeFi position in our vaults generates two distinct yield streams:
+
+1. **Base Yield**: The fundamental returns earned through core DeFi activities, such as lending interest on Dolomite or trading fees for providing liquidity on BEX. These yields are typically paid in the deposited token (e.g., $HONEY, $BERA).
+2. **Rewards Yield**: The incentive tokens earned through Berachain's Proof of Liquidity (POL) mechanism and platform-specific rewards programs, including $BGT and other ecosystem tokens like $KDK and $BURR.
+
+Our innovative vault structure splits these yield streams into two separate tranches, allowing users to choose which type of yield they prefer to maximize:
+
+### **Base-Yield Tranche:**
+
+* Generates yields in the same tokens you deposit ($HONEY, $BERA)
+* APR dynamically scales based on the relative size of this tranche
+* Ideal for users seeking to compound their core asset positions
+
+### **Rewards-Yield Tranche:**
+
+* Earns $fBGT and platform tokens ($KDK, $BURR)
+* Reward multipliers adjust according to tranche ratios
+* Perfect for users seeking token diversification and exposure to governance rewards
+
+---
+
+### **Example of Dynamic Yield Tranching:**
+
+Let's say a vault contains 10,000 $HONEY total deposits with:
+
+* 6,000 $HONEY in the Base-Yield Tranche (60%)
+* 4,000 $HONEY in the Rewards-Yield Tranche (40%)
+
+If the vault generates:
+
+* 8% APR in $HONEY (base yield)
+* Various reward tokens worth 15% APR (rewards yield)
+
+The yield distribution becomes:
+
+* Base-Yield Tranche users receive: 8% × (10,000/6,000) = 13.33% APR in $HONEY
+* Rewards-Yield Tranche users receive: 15% × (10,000/4,000) = 37.5% APR in reward tokens
+
+---
+
+If more users deposit into the Base-Yield Tranche, the Rewards-Yield APR increases, and vice versa, creating a self-balancing ecosystem that optimizes returns based on user preferences.
+
+[PreviousMulti-strategy vaults](/berafarm/how-does-berafarm-work/multi-strategy-vaults)[NextUnderstanding $fBGT](/berafarm/maximizing-pol-through-usdfbgt/understanding-usdfbgt)
+
+Last updated 2 months ago
