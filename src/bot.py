@@ -4,16 +4,22 @@ import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 from rag_model import RAGModel
-# from watchdog.observers import Observer
-# from watchdog.events import FileSystemEventHandler
 from utils import extract_chunks
+from price_fetcher import fetch_token_price
+
+TOKEN_MAP = {
+    "BERA":"berachain",
+    "BGT":"berachain-governance-token",
+    "iBGT":"infrared-bgt",
+    "lBGT":"liquid-bgt"
+}
 
 # Load environment variables
 env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
 load_dotenv(env_path)
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-DOCS_PATH = os.getenv("DOCS_PATH", "./docs")
+DOCS_PATH = os.getenv("DOCS_PATH", "../docs")
 
 # Initialize RAG model (indexing at startup)
 rag = RAGModel(docs_path=DOCS_PATH)
@@ -30,6 +36,19 @@ async def on_ready():
 @bot.command(name="ask")
 async def ask(ctx, *, question: str):
     """Handle !ask command: use RAG to answer user questions."""
+    if "price of" in question.lower():
+        token_name = extract_token_name(question)
+        token_id = TOKEN_MAP.get(token_name.upper())
+
+        if token_id:
+            prices = await fetch_token_price(token_id)
+            response = (f"**{token_name} Price**\n"
+                        f"Current: ${prices['current']:.2f}\n"
+                        f"Yesterday: ${prices['yesterday']:.2f}\n"
+                        f"Change: {calculate_change(prices):.2f}%")
+            await ctx.send(response)
+            return
+
     try:
         async with ctx.typing():
             response = rag.query(question, k=5)
@@ -56,7 +75,6 @@ async def ask(ctx, *, question: str):
 async def ping(ctx):
     await ctx.send(f"Pong! Latency: {round(bot.latency*1000)}ms")
 
-# File watcher for dynamic document updates\ nclass DocHandler(FileSystemEventHandler):
     def on_created(self, event):
         if event.is_directory: return
         chunks = extract_chunks(event.src_path)
@@ -65,9 +83,16 @@ async def ping(ctx):
         rag.db.persist()
         logging.info(f"Indexed new document: {event.src_path}")
 
-# observer = Observer()
-# observer.schedule(DocHandler(), path=DOCS_PATH, recursive=False)
-# observer.start()
+#Helper functions
+def extract_token_name(question:str) -> str:
+    tokens = question.lower().split()
+    if "price" in tokens:
+        idx = tokens.index("price")
+        return tokens[idx-1] if idx > 0 else "BGT"
+    return "BGT"
+
+def calculate_change(prices: dict) -> float:
+    return ((prices['current'] - prices['yesterday']) / prices['yesterday']) * 100
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
