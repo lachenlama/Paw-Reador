@@ -1,0 +1,52 @@
+# 🐻 BeraFarm Beta Launch Wallet Registration Guide 🚀
+
+**@OG Beras!**  
+The time has come to get your paws ready for our **Beta Launch**!  
+All OG members can now register their **EVM wallets** to secure their spot on the whitelist.
+
+---
+
+## 🤖 Meet Paw-signer Bot
+
+**Paw-signer** is our official BeraFarm Discord bot – your bear-y own personal assistant for wallet management and more.
+
+---
+
+## 📋 Available Commands
+
+### 🔗 Register Your Wallet
+
+
+Use this command /wallet_register to **register your wallet** for whitelist access to the BeraFarm Beta launch.  
+Make sure your address is **bear-fect**!
+
+---
+
+### ✅ Check Your Status
+
+Want to see if you're all set?  
+This command /wallet_status will show your **registered wallet status** – no need to bear any doubts!
+
+---
+
+### ❌ Deregister Your Wallet
+
+Need to un-register?  
+Use this command /wallet_deregister if you wish to **remove your current wallet registration**.
+
+---
+
+### 🔄 Update Your Address
+
+Already registered but want to change wallets?  
+**No prob-bear-m!**
+
+Simply use: 
+
+/wallet_register [new address]
+
+It will **automatically override** your previous wallet address.
+
+---
+
+Stay bear-y ready 🐾 – the farm is calling!
