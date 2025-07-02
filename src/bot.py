@@ -3,7 +3,6 @@ import logging
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
-from rag_model import RAGModel
 from utils import extract_chunks
 from price_fetcher import fetch_token_price
 
@@ -13,6 +12,8 @@ TOKEN_MAP = {
     "ibgt":"infrared-bgt",
     "lbgt":"liquid-bgt"
 }
+
+from rag_model import RAGModel
 
 # Load environment variables
 env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
@@ -36,19 +37,6 @@ async def on_ready():
 @bot.command(name="ask")
 async def ask(ctx, *, question: str):
     """Handle !ask command: use RAG to answer user questions."""
-    if "price of" in question.lower():
-        token_name = extract_token_name(question)
-        token_id = TOKEN_MAP.get(token_name.upper())
-
-        if token_id:
-            prices = await fetch_token_price(token_id)
-            response = (f"**{token_name} Price**\n"
-                        f"Current: ${prices['current']:.2f}\n"
-                        f"Yesterday: ${prices['yesterday']:.2f}\n"
-                        f"Change: {calculate_change(prices):.2f}%")
-            await ctx.send(response)
-            return
-
     try:
         async with ctx.typing():
             response = rag.query(question, k=5)
@@ -74,32 +62,36 @@ async def ask(ctx, *, question: str):
 @bot.command(name="ping")
 async def ping(ctx):
     await ctx.send(f"Pong! Latency: {round(bot.latency*1000)}ms")
-
-    def on_created(self, event):
-        if event.is_directory: return
-        chunks = extract_chunks(event.src_path)
-        embeds = rag.embeddings.embed_documents([c.page_content for c in chunks])
-        rag.db.add_documents(chunks)
-        rag.db.persist()
-        logging.info(f"Indexed new document: {event.src_path}")
+    
+@bot.command(name="price")
+async def price(ctx, *, token_name: str):
+    """Fetches the price for a given token."""
+    token_id = TOKEN_MAP.get(token_name.lower())
+    if not token_id:
+        await ctx.send(f"Sorry, I don't know the token '{token_name}'. Try one of: {', '.join(TOKEN_MAP.keys())}")
+        return
+    
+    try:
+        async with ctx.typing():
+            prices = await fetch_token_price(token_id)
+            if not prices:
+                await ctx.send("Sorry, I couldn't fetch the price data right now.")
+                return
+            
+            change = calculate_change(prices)
+            response = (f"**{token_name.upper()} Price**\n"
+                        f"Current: `${prices['current']:.4f}`\n"
+                        f"Yesterday: `${prices['yesterday']:.4f}`\n"
+                        f"24h Change: `{change:.2f}%`")
+            await ctx.send(response)
+    except Exception as e:
+        logging.exception(f"Error fetching price for {token_name}")
+        await ctx.send("Sorry, an error occurred while fetching the price.")
 
 #Helper functions
-def extract_token_name(question:str) -> str:
-    tokens = question.lower().split()
-    price_terms = ["price", "prices", "value", "cost", "how much"]
-    for term in price_terms:
-        if term in tokens:
-            start_idx = max(0, tokens.index(term) - 2)
-            end_idx = min(len(tokens), tokens.index(term) + 3)
-            context = tokens[start_idx:end_idx]
-
-            for token in TOKEN_MAP.keys():
-                if token in context:
-                    return token
-
-    return "bgt"    
-
 def calculate_change(prices: dict) -> float:
+    if prices['yesterday'] == 0:
+        return float('inf') if prices['current'] > 0 else 0.0
     return ((prices['current'] - prices['yesterday']) / prices['yesterday']) * 100
 
 if __name__ == "__main__":
