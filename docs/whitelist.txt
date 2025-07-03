@@ -8,7 +8,7 @@ How to get beta access:
 
 👉 Head to ⁠🐻┃og-chat and register your wallet to WL for the BeraFarm Beta Launch 
 👉Only whitelisted wallets can deposit into our vaults to minimize risks.
-👉The deposit limits are set to ~ 4.2 BERA at present.
+👉The max deposit limits are set to ~ 4.2 BERA per berafarm vault at present.
 👉The invite code to our dapp is - 696969
 
 🎁 YOUR BETA REWARDS
