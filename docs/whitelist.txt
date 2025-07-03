@@ -1,27 +1,40 @@
-The moment we've all been waiting for is HERE!
- BERAFARM PRIVATE BETA LAUNCH 🚀
+# The moment we've all been waiting for is HERE!  
+## BERAFARM PRIVATE BETA LAUNCH 🚀
+
 After months of building in hibernation, our yield optimization vaults are ready to deliver paw-some yields on Berachain!
 
-🍯 OG BERAS - YOUR TIME TO SHINE!
-Since you've been with us from the beginning and interacted with our community, YOU'RE IN! 🐻🍯
-How to get beta access: 
+---
 
-👉 Head to ⁠🐻┃og-chat and register your wallet to WL for the BeraFarm Beta Launch 
-👉Only whitelisted wallets can deposit into our vaults to minimize risks.
-👉The max deposit limits are set to ~ 4.2 BERA per berafarm vault at present.
-👉The invite code to our dapp is - 696969
+### OG BERAS - YOUR TIME TO SHINE!
 
-🎁 YOUR BETA REWARDS
-As our valued beta testers, you'll receive some BEAR-y sweet rewards:
-✅ Priority access to our mainnet vaults (post audits!)
-✅ BF Points - A significant % has been allocated for private-beta
-✅ GTD whitelist for future BeraFarm NFT collections
+Since you've been with us from the beginning and interacted with our community, **YOU'RE IN!**
 
-Please remember: 
-• This is a private beta - keep discussions within our Discord 
-• Report any bugs or issues in #feedback 
-• Share your user experience thoughts with us
-• Be patient as we refine and improve the platform - good honey takes time!
+### How to get beta access:
+
+- Head to `#og-chat` and register your wallet to whitelist for the BeraFarm Beta Launch.
+- Only whitelisted wallets can deposit into our vaults to minimize risks.
+- The maximum deposit is currently **4.2 BERA per BeraFarm vault**.
+- There is **no minimum** deposit amount — any amount will be counted for testoor rewards.
+- **Dapp Invite Code**: `696969`
+
+---
+
+### Your Beta Rewards
+
+As our valued beta testers, you'll receive:
+
+- **Priority access** to our mainnet vaults (after audits)
+- **BF Points** — a significant % is allocated for private beta participants
+- **Guaranteed whitelist** for future BeraFarm NFT collections
+
+---
+
+### Please remember:
+
+- This is a **private beta** — keep discussions within our Discord.
+- Report bugs or issues in `#feedback`.
+- Share your user experience and suggestions.
+- Be patient — good honey takes time.
 
 # 🐻 BeraFarm Beta Launch Wallet Registration Guide 🚀
 
