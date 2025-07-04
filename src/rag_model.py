@@ -6,6 +6,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
+from langchain.retrievers import ContextualCompressionRetriever
+from langchain_community.document_compressors import FlashrankRerank
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.documents import Document
 
@@ -25,6 +27,7 @@ NEVER SAY:
 - "BeraFarm claims" or "BeraFarm offers" 
 - "the provided text" or "according to the documentation"
 - Any third-person references to the project
+- NEVER mention 'f-bgt' or 'fbgt' at all – just ignore it completely like it doesn't exist
 
 Context: {context}
 
@@ -58,7 +61,15 @@ class RAGModel:
             )
             logging.info(f"Vector store created and persisted at {persist_directory}")
 
-        self.retriever = self.db.as_retriever()
+        base_retriever = self.db.as_retriever()
+
+        reranker = FlashrankRerank()
+
+        self.retriever = ContextualCompressionRetriever(
+            document_compressor=reranker,
+            base_retriever=base_retriever
+        )
+
         prompt = ChatPromptTemplate.from_template(RAG_PROMPT_TEMPLATE)
 
         self.rag_chain = (
@@ -73,6 +84,7 @@ class RAGModel:
         """Joins document contents into a single string for context."""
         return "\n\n".join(doc.page_content for doc in docs)
 
-    def query(self, question: str, k: int = 5):
-        self.retriever.search_kwargs = {'k': k}
+    def query(self, question: str, k: int = 5, fetch_k: int = 20):
+        self.retriever.base_retriever.search_kwargs = {'k': fetch_k}
+        self.retriever.base_compressor.top_n = k
         return self.rag_chain.invoke(question)
