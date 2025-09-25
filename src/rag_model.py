@@ -148,10 +148,10 @@ class RAGModel:
         self.user_requests[user_id].append(datetime.now())
 
     def _get_chat_history(self, user_id: str) -> str:
-        if user_id not in self.chat_histores:
+        if user_id not in self.chat_histories:
             return ""
         
-        history = self.chat_histores[user_id][-self.context_window:]
+        history = self.chat_histories[user_id][-self.context_window:]
         formatted = []
         for entry in history:
             formatted.append(f"User: {entry['question']}")
@@ -161,7 +161,7 @@ class RAGModel:
 
     def _update_chat_history(self, user_id: str, question: str, response: str):
         if user_id not in self.chat_histories:
-            self.chat_histores[user_id] = []
+            self.chat_histories[user_id] = []
 
         self.chat_histories[user_id].append({
             "question": question,
@@ -169,8 +169,8 @@ class RAGModel:
             "timestamp": datetime.now().isoformat()
         })
 
-        if len(self.chat_histores[user_id]) > self.context_window * 2:
-            self.chat_histores[user_id] = self.chat_histores[user_id][-self.context_window:]
+        if len(self.chat_histories[user_id]) > self.context_window * 2:
+            self.chat_histories[user_id] = self.chat_histories[user_id][-self.context_window:]
 
     def _clean_response_for_discord(self, response: str) -> str:
         response = "\n".join(line.strip() for line in response.splitlines("\n") if line.strip())
