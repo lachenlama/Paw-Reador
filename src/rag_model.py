@@ -90,7 +90,7 @@ class RAGModel:
         reranker = FlashrankRerank()
 
         self.retriever = ContextualCompressionRetriever(
-            document_compressor=reranker,
+            base_compressor=reranker,
             base_retriever=base_retriever
         )
 
