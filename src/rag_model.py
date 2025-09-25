@@ -58,7 +58,7 @@ class RAGModel:
         )
 
         self.embeddings = HuggingFaceEmbeddings(
-            model_name="BAAI/bge-base-en-v1.5"
+            model_name="all-MiniLM-L6-v2"
         )
 
         #Enhanced Memory and caching
