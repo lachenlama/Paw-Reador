@@ -1,5 +1,5 @@
 import os
-from langchain.document_loaders import TextLoader, UnstructuredPDFLoader
+from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
