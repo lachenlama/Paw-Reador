@@ -208,7 +208,7 @@ class RAGModel:
             chat_history = self._get_chat_history(user_id) if user_id else ""
             
             # Update retriever
-            self.retriever.search_kwargs = {'k': k}
+            self.retriever.search_kwargs = {'k': k} if hasattr(self.retriever, 'search_kwargs') else {'search_type': 'similarity', 'k': k}
             
             # Get context docs
             docs = await asyncio.get_event_loop().run_in_executor(
