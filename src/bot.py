@@ -42,7 +42,7 @@ async def ask(ctx, *, question: str):
     """Handle !ask command: use RAG to answer user questions."""
     try:
         async with ctx.typing():
-            result = rag.query_async(question, str(ctx.author.id), k=5)
+            result = await rag.query_async(question, str(ctx.author.id), k=5)
             # Extract text from AIMessage or string
             if result["rate_limited"]:
                 await ctx.send(result['rate_limited'])
