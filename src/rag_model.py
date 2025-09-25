@@ -182,6 +182,12 @@ class RAGModel:
 
     async def query_async(self, question: str, user_id: str = None, k: int = 5) -> Dict:
         """Async query with enhanced features"""
+        # Ensure k is an integer
+        try:
+            k = int(k) if k is not None else 5
+        except (ValueError, TypeError):
+            k = 5
+            
         # Rate limiting check
         if user_id and not self._check_rate_limit(user_id):
             return {
@@ -207,8 +213,9 @@ class RAGModel:
             # Get chat history context
             chat_history = self._get_chat_history(user_id) if user_id else ""
             
-            # Update retriever
-            # self.retriever.search_kwargs = {'k': k} if hasattr(self.retriever, 'search_kwargs') else {'search_type': 'similarity', 'k': k}
+            # Update retriever search kwargs properly
+            if hasattr(self.retriever.base_retriever, 'search_kwargs'):
+                self.retriever.base_retriever.search_kwargs = {'k': k}
             
             # Get context docs
             docs = await asyncio.get_event_loop().run_in_executor(
@@ -259,9 +266,16 @@ class RAGModel:
 
     def query(self, question: str, user_id: str = None, k: int = 5, stream: bool = False):
         """Synchronous query with enhancements"""
+        # Ensure k is an integer
+        try:
+            k = int(k) if k is not None else 5
+        except (ValueError, TypeError):
+            k = 5
+            
         if stream:
             # For streaming, use original implementation
-            self.retriever.search_kwargs = {'k': k}
+            if hasattr(self.retriever.base_retriever, 'search_kwargs'):
+                self.retriever.base_retriever.search_kwargs = {'k': k}
             return self.rag_chain.stream(question)
         
         # Run async query in sync context
