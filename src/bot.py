@@ -58,7 +58,7 @@ async def ask(ctx, *, question: str):
 
             prefix = " ".join(indicators) + " " if indicators else ""
 
-            await send_long_messages(ctx, f"{prefix}{response_text}")
+            await send_long_message(ctx, f"{prefix}{response_text}")
             
     except Exception as e:
         logging.exception("Error in ask command")
