@@ -62,9 +62,9 @@ class RAGModel:
         )
 
         #Enhanced Memory and caching
-        self.chat_histores: Dict[str, List[Dict]] = {} #user_id --> chat history
+        self.chat_histories: Dict[str, List[Dict]] = {} #user_id --> chat history
         self.response_cache: Dict[str, str] = {} #question hash --> response
-        self.cache_size: cache_size
+        self.cache_size = cache_size
         self.context_window = context_window
 
         #Rate limiting
